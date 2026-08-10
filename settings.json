@@ -31,8 +31,6 @@
       "repeat": true,
       "repeat-delay": 120,
       "messages": [
-        "I love maggi",
-        "Hello Monkey's"
       ]
     },
     "chat-log": true,
