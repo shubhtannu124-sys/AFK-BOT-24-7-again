@@ -2077,3 +2077,23 @@ addLog(
 addLog("=".repeat(50));
 
 createBot();
+
+// --- AUTO-RECONNECT SNIPPET (Paste below bot creation) ---
+const RECONNECT_DELAY_MS = 10000; // Waits 10 seconds before reconnecting
+
+bot.on('kicked', (reason) => {
+  console.log(`[KICKED/BANNED] Reason: ${JSON.stringify(reason)}`);
+});
+
+bot.on('end', () => {
+  console.log(`[DISCONNECTED] Reconnecting in ${RECONNECT_DELAY_MS / 1000} seconds...`);
+  setTimeout(() => {
+    // Restarts the process so the entire script re-runs cleanly
+    process.exit(0);
+  }, RECONNECT_DELAY_MS);
+});
+
+bot.on('error', (err) => {
+  console.error(`[ERROR] ${err.message}`);
+});
+// --------------------------------------------------------
